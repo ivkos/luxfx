@@ -1,0 +1,30 @@
+{
+  "private": true,
+  "name": "iot-lux",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "chroma-js": "^2.0.2",
+    "lodash": "^4.17.11",
+    "mqtt": "^2.18.8",
+    "nconf": "^0.10.0",
+    "rpi-ws281x-native": "^0.9.0",
+    "winston": "^2.4.4",
+    "winston-console-formatter": "^1.0.0-beta.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ivkos/iot-lux.git"
+  },
+  "author": "Ivaylo Stoyanov",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/ivkos/iot-lux/issues"
+  },
+  "homepage": "https://github.com/ivkos/iot-lux#readme"
+}
