@@ -1,15 +1,15 @@
-const winston = require("winston")
+import { Logger, transports } from "winston"
 const wcf = require("winston-console-formatter")
 
-const logger = new winston.Logger({
+const logger = new Logger({
     level: 'info',
 })
 
 const { formatter, timestamp } = wcf()
 
-logger.add(winston.transports.Console, {
+logger.add(transports.Console, {
     formatter,
     timestamp,
 })
 
-module.exports = logger
+export default logger
