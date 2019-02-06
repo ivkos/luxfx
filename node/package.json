@@ -22,8 +22,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc -p .",
-    "watch": "tsc --watch -p ."
+    "build": "tsc -b . --verbose",
+    "watch": "tsc -b . --verbose --watch"
   },
   "repository": {
     "type": "git",
