@@ -25,7 +25,7 @@ export class BladeRunnerEffect implements Effect {
     }
 
     async start() {
-        const cyan = chroma("cyan").darken(1)
+        const cyan = chroma("cyan").darken(1.5)
         const magenta = chroma("magenta")
 
         const sourceColors = this.options.inverseColors ?
