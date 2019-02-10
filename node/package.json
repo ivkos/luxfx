@@ -3,7 +3,7 @@
   "name": "iot-lux",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "build/index.js",
   "dependencies": {
     "chroma-js": "^2.0.2",
     "lodash": "^4.17.11",
@@ -18,12 +18,14 @@
     "@types/lodash": "^4.14.120",
     "@types/mqtt": "^2.5.0",
     "@types/node": "^10.12.21",
+    "nodemon": "^1.18.10",
     "typescript": "^3.3.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc -b . --verbose",
-    "watch": "tsc -b . --verbose --watch"
+    "watch": "tsc -b . --verbose --watch",
+    "dev": "nodemon --watch build/"
   },
   "repository": {
     "type": "git",
@@ -34,5 +36,12 @@
   "bugs": {
     "url": "https://github.com/ivkos/iot-lux/issues"
   },
-  "homepage": "https://github.com/ivkos/iot-lux#readme"
+  "homepage": "https://github.com/ivkos/iot-lux#readme",
+  "nodemonConfig": {
+    "ignore": [
+        "**/*.d.ts",
+        "**/*.js.map"
+    ],
+    "delay": 1000
+  }
 }
