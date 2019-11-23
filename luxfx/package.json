@@ -4,25 +4,8 @@
   "version": "1.0.0",
   "description": "",
   "main": "build/index.js",
-  "dependencies": {
-    "chroma-js": "^2.0.2",
-    "lodash": "^4.17.11",
-    "mqtt": "^2.18.8",
-    "nconf": "^0.10.0",
-    "rpi-ws281x-native": "^0.9.0",
-    "winston": "^2.4.4",
-    "winston-console-formatter": "^1.0.0-beta.3"
-  },
-  "devDependencies": {
-    "@types/chroma-js": "^1.4.1",
-    "@types/lodash": "^4.14.120",
-    "@types/mqtt": "^2.5.0",
-    "@types/node": "^10.17.5",
-    "nodemon": "^1.18.10",
-    "typescript": "^3.7.2"
-  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node build/index.js",
     "build": "tsc -b . --verbose",
     "watch": "tsc -b . --verbose --watch",
     "dev": "nodemon --watch build/"
@@ -31,12 +14,33 @@
     "type": "git",
     "url": "git+https://github.com/ivkos/iot-lux.git"
   },
-  "author": "Ivaylo Stoyanov",
+  "author": {
+    "name": "Ivaylo Stoyanov",
+    "email": "me@ivkos.com",
+    "url": "https://github.com/ivkos"
+  },
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/ivkos/iot-lux/issues"
   },
   "homepage": "https://github.com/ivkos/iot-lux#readme",
+  "dependencies": {
+    "chroma-js": "^2.1.0",
+    "lodash": "^4.17.15",
+    "mqtt": "^2.18.8",
+    "nconf": "^0.10.0",
+    "rpi-ws281x-native": "^0.9.0",
+    "winston": "^2.4.4",
+    "winston-console-formatter": "^1.0.0-beta.3"
+  },
+  "devDependencies": {
+    "@types/chroma-js": "^1.4.3",
+    "@types/lodash": "^4.14.149",
+    "@types/mqtt": "^2.5.0",
+    "@types/node": "^10.17.5",
+    "nodemon": "^1.19.4",
+    "typescript": "^3.7.2"
+  },
   "nodemonConfig": {
     "ignore": [
       "**/*.d.ts",
