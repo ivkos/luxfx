@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "iot-lux",
+  "name": "luxfx",
   "version": "1.0.0",
   "description": "",
   "main": "build/index.js",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ivkos/iot-lux.git"
+    "url": "git+https://github.com/ivkos/luxfx.git"
   },
   "author": {
     "name": "Ivaylo Stoyanov",
@@ -21,9 +21,9 @@
   },
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/ivkos/iot-lux/issues"
+    "url": "https://github.com/ivkos/luxfx/issues"
   },
-  "homepage": "https://github.com/ivkos/iot-lux#readme",
+  "homepage": "https://github.com/ivkos/luxfx#readme",
   "dependencies": {
     "chroma-js": "^2.1.0",
     "lodash": "^4.17.15",
