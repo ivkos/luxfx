@@ -1,7 +1,7 @@
-import { Strip } from "../support/types/Strip";
-import logger from "../util/Logger";
+import { Strip } from "../Strip";
 import * as dgram from "dgram"
 import * as _ from "lodash"
+import { Logger } from "@nestjs/common"
 
 const DEFAULT_PORT = 42170
 
@@ -9,6 +9,7 @@ export class LuxsrvStrip implements Strip {
     private isReset = false
     private brightnessScale = 255 / 255
     private readonly client: dgram.Socket;
+    private readonly logger = new Logger(LuxsrvStrip.name)
 
     constructor(readonly ledCount: number,
                 initialBrightness: number = 255,
@@ -21,7 +22,7 @@ export class LuxsrvStrip implements Strip {
 
     async render(pixelData: Uint32Array): Promise<void> {
         if (this.isReset) {
-            logger.warn("Tried to render(...) after reset")
+            this.logger.warn("Tried to render(...) after reset")
             return
         }
 
@@ -50,7 +51,7 @@ export class LuxsrvStrip implements Strip {
 
     async setBrightness(value: number): Promise<void> {
         if (this.isReset) {
-            logger.warn("Tried to setBrightness(...) after reset")
+            this.logger.warn("Tried to setBrightness(...) after reset")
             return
         }
 
