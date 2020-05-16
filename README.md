@@ -1,9 +1,12 @@
 # luxfx
+❤️💚💙
 
 **luxfx** is a TypeScript REST application that controls
 **[Lux](https://github.com/ivkos/lux)**-compatible servers, such as 
 **[luxsrv](https://github.com/ivkos/luxsrv)** itself, or 
-**[luxaudio](https://github.com/ivkos/luxsrv)** running in Luxception mode.
+**[luxaudio](https://github.com/ivkos/luxaudio)** running in Luxception mode.
+
+**luxaudio** is part of **[Lux](https://github.com/ivkos/lux)**.
 
 ## Installation
 
