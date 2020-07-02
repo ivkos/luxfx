@@ -1,0 +1,72 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+
+      - run: npm ci
+      - run: npm run build
+
+      - run: pkg --targets="node12.2.0-linux-x64" dist/index.js --output=./bin/luxfx-linux_amd64
+      - run: pkg --targets="node12.2.0-linux-armv7" dist/index.js --output=./bin/luxfx-linux_armv7
+      - run: pkg --targets="node12.2.0-win-x64" dist/index.js --output=./bin/luxfx-windows_amd64.exe
+
+      - run: sudo apt-get install -y binutils binutils-arm-linux-gnueabihf binutils-mingw-w64-i686 upx-ucl
+      - run: strip ./bin/luxfx-linux_amd64
+      - run: arm-linux-gnueabihf-strip ./bin/luxfx-linux_armv7
+      - run: x86_64-w64-mingw32-strip ./bin/luxfx-windows_amd64.exe
+
+      - run: upx -9 ./bin/
+
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: rc${{ github.run_number }}
+          release_name: Version RC${{ github.run_number }}
+          draft: false
+          prerelease: true
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./bin/luxfx-linux_amd64
+          asset_name: luxfx-linux_amd64
+          asset_content_type: application/x-elf
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./bin/luxfx-linux_armv7
+          asset_name: luxfx-linux_armv7
+          asset_content_type: application/x-elf
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./bin/luxfx-windows_amd64.exe
+          asset_name: luxfx-windows_amd64.exe
+          asset_content_type: application/vnd.microsoft.portable-executable
