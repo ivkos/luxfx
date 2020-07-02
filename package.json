@@ -3,7 +3,7 @@
     "name": "luxfx",
     "version": "1.0.0",
     "description": "",
-    "main": "build/index.js",
+    "main": "dist/index.js",
     "scripts": {
         "prebuild": "rimraf dist",
         "build": "nest build",
@@ -58,6 +58,7 @@
         "eslint-config-prettier": "^6.7.0",
         "eslint-plugin-import": "^2.19.1",
         "jest": "^24.9.0",
+        "pkg": "^4.4.9",
         "prettier": "^1.18.2",
         "rimraf": "^3.0.0",
         "supertest": "^4.0.2",
