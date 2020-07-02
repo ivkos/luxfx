@@ -18,9 +18,9 @@ jobs:
       - run: npm ci
       - run: npm run build
 
-      - run: ./node_modules/.bin/pkg --targets="node10.17.0-linux-x64" dist/index.js --output=./bin/luxfx-linux_amd64
-      - run: ./node_modules/.bin/pkg --targets="node10.17.0-linux-armv7" dist/index.js --output=./bin/luxfx-linux_armv7
-      - run: ./node_modules/.bin/pkg --targets="node10.17.0-win-x64" dist/index.js --output=./bin/luxfx-windows_amd64.exe
+      - run: ./node_modules/.bin/pkg -d --targets="node10.17.0-linux-x64" dist/index.js --output=./bin/luxfx-linux_amd64
+      - run: ./node_modules/.bin/pkg -d --targets="node10.17.0-linux-armv7" dist/index.js --output=./bin/luxfx-linux_armv7
+      - run: ./node_modules/.bin/pkg -d --targets="node10.17.0-win-x64" dist/index.js --output=./bin/luxfx-windows_amd64.exe
 
       - run: sudo apt-get install -y binutils binutils-arm-linux-gnueabihf binutils-mingw-w64-i686 upx-ucl
       - run: strip ./bin/luxfx-linux_amd64
