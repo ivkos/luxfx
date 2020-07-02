@@ -2,7 +2,8 @@ import { Injectable, NotFoundException, NotImplementedException, OnModuleInit } 
 import { Action, Effect, EffectId } from "../effects/Effect"
 import { ModuleRef } from "@nestjs/core"
 import { EnabledEffects } from "../effects/EnabledEffects"
-import { ConfigService } from "@nestjs/config";
+import { ConfigService } from "@nestjs/config"
+const fromPairs = require("lodash/fromPairs")
 
 @Injectable()
 export class EffectsService implements OnModuleInit {
@@ -13,7 +14,7 @@ export class EffectsService implements OnModuleInit {
                 private readonly moduleRef: ModuleRef) {}
 
     onModuleInit() {
-        this.effects = Object.fromEntries(EnabledEffects.map(clazz => {
+        this.effects = fromPairs(EnabledEffects.map(clazz => {
             const instance = this.moduleRef.get(clazz, { strict: false })
             instance.initializeDefaultOptions()
             return [instance.getId(), instance]
