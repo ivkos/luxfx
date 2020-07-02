@@ -1,9 +1,0 @@
-# This file contains configuration properties
-#  that can be overridden by environment variables.
-
-PORT: 4420
-
-PIXEL_COUNT: 120
-DEFAULT_BRIGHTNESS: 255
-DEFAULT_EFFECT: SolidColorEffect
-LUXSRV_ADDRESS: rp4

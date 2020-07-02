@@ -2,15 +2,14 @@ import { Injectable, NotFoundException, NotImplementedException, OnModuleInit } 
 import { Action, Effect, EffectId } from "../effects/Effect"
 import { ModuleRef } from "@nestjs/core"
 import { EnabledEffects } from "../effects/EnabledEffects"
-import { Configuration } from "../config/Configuration"
-import { ConfigKey } from "../config/ConfigKey"
+import { ConfigService } from "@nestjs/config";
 
 @Injectable()
 export class EffectsService implements OnModuleInit {
     private effects: { [key: string]: Effect }
     private currentEffect: Effect
 
-    constructor(private readonly config: Configuration,
+    constructor(private readonly config: ConfigService,
                 private readonly moduleRef: ModuleRef) {}
 
     onModuleInit() {
@@ -20,7 +19,7 @@ export class EffectsService implements OnModuleInit {
             return [instance.getId(), instance]
         }))
 
-        this.currentEffect = this.findById(this.config.get(ConfigKey.DEFAULT_EFFECT))
+        this.currentEffect = this.findById(this.config.get("DEFAULT_EFFECT"))
         this.currentEffect.start()
     }
 

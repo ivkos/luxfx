@@ -1,5 +1,5 @@
 import { Module } from "@nestjs/common"
-import { ConfigurationModule } from "../config/ConfigurationModule"
+import { ConfigurationModule } from "src/ConfigurationModule"
 import { EffectsService } from "./EffectsService"
 import { EffectsController } from "./EffectsController"
 import { IndexController } from "./IndexController"

@@ -1,18 +1,18 @@
-import { ConfigurationModule } from "../config/ConfigurationModule"
 import { Strip } from "./Strip"
-import { Configuration } from "../config/Configuration"
 import { LuxsrvStrip } from "./impl/LuxsrvStrip"
-import { ConfigKey } from "../config/ConfigKey"
 import { Module } from "@nestjs/common"
+import { ConfigurationModule } from "../ConfigurationModule";
+import { ConfigService } from "@nestjs/config";
 
 @Module({
     imports: [ConfigurationModule],
     providers: [
         {
-            provide: Strip, inject: [Configuration], useFactory: config => new LuxsrvStrip(
-                config.get(ConfigKey.PIXEL_COUNT),
-                config.get(ConfigKey.DEFAULT_BRIGHTNESS),
-                config.get(ConfigKey.LUXSRV_ADDRESS),
+            provide: Strip, inject: [ConfigService], useFactory: config => new LuxsrvStrip(
+                config.get("PIXEL_COUNT"),
+                config.get("DEFAULT_BRIGHTNESS"),
+                config.get("LUXSRV_HOST"),
+                config.get("LUXSRV_PORT"),
             ),
         },
     ],
