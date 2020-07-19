@@ -39,7 +39,7 @@
         "@nestjs/core": "^6.10.14",
         "@nestjs/platform-express": "^6.10.14",
         "chroma-js": "^2.1.0",
-        "lodash": "^4.17.15",
+        "lodash": "^4.17.19",
         "reflect-metadata": "^0.1.13"
     },
     "devDependencies": {
